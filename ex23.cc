@@ -45,8 +45,9 @@ void initialize_abundants(std::array<bool, 28123>& abundants_array, std::vector<
     }
 }
 
+
 /// If n is a sum of two abundents - it returns 0, otherwise, it return n.
-int sum_of_abundants(const std::array<bool, 28123>& abundants_array, const std::vector<int>& abundants_vector, int n) {
+int calc_value_to_add(const std::array<bool, 28123>& abundants_array, const std::vector<int>& abundants_vector, int n) {
     for (int current_abundant : abundants_vector)
     {
         if (current_abundant >= n) {
@@ -60,6 +61,7 @@ int sum_of_abundants(const std::array<bool, 28123>& abundants_array, const std::
     return n;
 }
 
+
 /// Main function.
 int main()
 {
@@ -67,10 +69,12 @@ int main()
     std::array<bool, 28123> abundants_array;
     std::vector<int> abundants_vector;
     initialize_abundants(abundants_array, abundants_vector);
+
     for (int i = 1; i < 28123; i++)
     {
-        sum += sum_of_abundants(abundants_array, abundants_vector, i);
+        sum += calc_value_to_add(abundants_array, abundants_vector, i);
     }
     std::cout << "The sum is: " << sum << std::endl;
     return 0;
 }
+
